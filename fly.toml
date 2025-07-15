@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for yornoc-consciousness-bridge-231 on 2025-07-09T02:31:23-04:00
+# fly.toml app configuration file generated for yornoc-consciousness-bridge-233 on 2025-07-09T02:33:32-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'yornoc-consciousness-bridge-231'
+app = 'yornoc-consciousness-bridge-233'
 primary_region = 'lax'
 
 [build]

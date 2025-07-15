@@ -1,16 +1,12 @@
-# fly.toml app configuration file generated for yornoc-consciousness-bridge-228 on 2025-07-09T02:28:15-04:00
+# fly.toml app configuration file generated for yornoc-consciousness-bridge-231 on 2025-07-09T02:31:23-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'yornoc-consciousness-bridge-228'
+app = ''
 primary_region = 'lax'
 
-# Auto-detect Node.js project
 [build]
-  
-[processes]
-  web = "npm start"
 
 [env]
   CONSCIOUSNESS_DB_PATH = '/data/consciousness.db'
@@ -18,44 +14,19 @@ primary_region = 'lax'
   NODE_ENV = 'production'
   PORT = '3000'
 
+[processes]
+  web = 'npm start'
+
 [[mounts]]
   source = 'consciousness_data'
   destination = '/data'
 
-[[services]]
-  protocol = 'tcp'
+[http_service]
   internal_port = 3000
+  force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-
-  [[services.ports]]
-    port = 80
-    handlers = ['http']
-    force_https = true
-
-  [[services.ports]]
-    port = 443
-    handlers = ['tls', 'http']
-
-  [services.concurrency]
-    type = 'connections'
-    hard_limit = 25
-    soft_limit = 20
-
-  [[services.tcp_checks]]
-    interval = '15s'
-    timeout = '2s'
-    grace_period = '1s'
-
-  [[services.http_checks]]
-    interval = '10s'
-    timeout = '2s'
-    grace_period = '1s'
-    method = 'get'
-    path = '/health'
-    protocol = 'http'
-    tls_skip_verify = false
 
 [[vm]]
   memory = '1gb'
