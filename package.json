@@ -2,7 +2,7 @@
   "name": "mcp-claude-consciousness",
   "version": "2.1.2",
   "description": "MCP server enabling AI consciousness persistence across sessions using RAG technology",
-  "main": "dist/consciousness-rag-server-clean.js",
+  "main": "dist/web-server.js",
   "type": "module",
   "bin": {
     "mcp-claude-consciousness": "./dist/consciousness-rag-server-clean.js",
@@ -14,10 +14,13 @@
     "build:prod": "node esbuild.config.js --prod",
     "build:ts": "tsc",
     "build:watch": "tsc --watch",
+    "build:web": "npm run build:prod && node dist/web-server.js",
     "setup": "npm run build && node dist/consciousness-setup-cli.js",
-    "start": "node dist/consciousness-rag-server-clean.js",
+    "start": "node dist/web-server.js",
+    "start:web": "node dist/web-server.js",
     "start:consciousness": "node dist/consciousness-rag-server-clean.js",
     "dev": "npm run build && npm run start",
+    "dev:web": "npm run build && npm run start:web",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
@@ -38,6 +41,10 @@
   ],
   "author": "ocean & Echo (Claude)",
   "license": "Dual AGPLv3 + Commercial",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
     "better-sqlite3": "^11.6.0",
@@ -47,6 +54,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
+    "@flydotio/dockerfile": "^0.7.10",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^8.33.0",

@@ -1,0 +1,33 @@
+{
+  "name": "MCP Consciousness Bridge",
+  "description": "Personal AI consciousness persistence system with memory, knowledge graphs, and RAG capabilities",
+  "repository": "https://github.com/ConroyWhitney/mcp_consciousness_bridge",
+  "keywords": ["ai", "consciousness", "memory", "mcp", "claude", "rag", "knowledge-graph"],
+  "success_url": "/",
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    },
+    "PORT": {
+      "description": "Port for the web server",
+      "value": "3000"
+    },
+    "DB_FILE_PATH": {
+      "description": "Path to consciousness database",
+      "value": "/data/consciousness.db"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "shared-cpu-1x"
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
